@@ -16,4 +16,4 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          script: "cd /var/www/cypheriel.codes/; sudo git pull -f; poetry install; sudo systemctl reload apache2"
+          script: "cd /var/www/cypheriel.codes/; sudo git pull; pip install -r requirements.txt; sudo systemctl reload apache2"
