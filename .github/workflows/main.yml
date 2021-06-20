@@ -9,12 +9,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2.3.0
+      - uses: actions/checkout@master
+      - name: SCP Files
+        uses: appleboy/scp-action@v0.0.1
         with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          known_hosts: unnecessary
-          if_key_exists: replace
+          source: "./"
+          target: "/var/www/cypheriel.codes/"
+          rm: true
+          overwrite: true
       
-      - name: Rsync over SSH
-        run: rsync ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/cypheriel.codes/
+      - name: Execute Command via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: "poetry install; sudo systemctl reload apache2"
