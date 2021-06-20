@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Unknown Page - cypheriel.codes</title>
+    {% endif %}
+
+    {% if embed %}
+        <meta property="og:site_name" content="{{ embed.site_name }}">
+        <meta property="og:title" content="{{ embed.title }}"/>
+        <meta property="og:description" content="{{ embed.desc }}"/>
+        {% if embed.url %}
+            <meta property="og:url" content="{{ embed.url }}"/>
+        {% endif %}
+        <meta name="theme-color" content="#{{ embed.color }}" data-react-helmet="true">
+    {% endif %}
+
+    {% block head %}
+    {% endblock head %}
+</head>
+<body>
+{% block body %}
+{% endblock body %}
+</body>
+</html>
