@@ -1,0 +1,20 @@
+name: Apache Deployment
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2.3.0
+        with:
+          key: ${{ secrets.KEY }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          if_key_exists: replace
+      
+      - name: Rsync over SSH
+        run: rsync ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/var/www/cypheriel.codes/
