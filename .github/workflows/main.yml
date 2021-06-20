@@ -11,10 +11,9 @@ jobs:
     steps:
       - name: Execute Command via SSH
         uses: appleboy/ssh-action@master
-        env:
+        with:
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-        with:
           script: "cd /var/www/cypheriel.codes/; sudo git pull -f; poetry install; sudo systemctl reload apache2"
