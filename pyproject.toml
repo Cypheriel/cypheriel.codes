@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cypheriel.codes"
+name = "cypheriel_codes"
 version = "0.1.0"
 description = ""
 authors = ["Cypheriel <Mikel@hanger-84.com>"]
