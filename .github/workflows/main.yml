@@ -12,11 +12,12 @@ jobs:
       - uses: actions/checkout@master
       - name: SCP Files
         uses: appleboy/scp-action@v0.0.1
-        with:
+        env:
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
+        with:
           source: "./"
           target: "/var/www/cypheriel.codes/"
           rm: true
@@ -24,9 +25,10 @@ jobs:
       
       - name: Execute Command via SSH
         uses: appleboy/ssh-action@master
-        with:
+        env:
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
+        with:
           script: "poetry install; sudo systemctl reload apache2"
