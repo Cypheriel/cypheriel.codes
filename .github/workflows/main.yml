@@ -9,19 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
-      - name: SCP Files
-        uses: appleboy/scp-action@v0.0.1
-        env:
-          host: ${{ secrets.HOST }}
-          port: ${{ secrets.PORT }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          source: "./"
-          target: "/var/www/cypheriel.codes/"
-          rm: true
-          overwrite: true
-      
       - name: Execute Command via SSH
         uses: appleboy/ssh-action@master
         env:
@@ -30,4 +17,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
         with:
-          script: "poetry install; sudo systemctl reload apache2"
+          script: "cd /var/www/cypheriel.codes/; sudo git pull -f; poetry install; sudo systemctl reload apache2"
