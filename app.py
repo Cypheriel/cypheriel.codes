@@ -68,7 +68,7 @@ def oembed_generator():
     return render_template(
         "embed.html",
         link=f"https://cypheriel.codes/oembed.json?{query}",
-        embed=Embed()
+        embed=Embed(title=oembed.get("title", ""))
     )
 
 
