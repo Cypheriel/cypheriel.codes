@@ -16,6 +16,10 @@
         <meta name="theme-color" content="#{{ embed.color }}" data-react-helmet="true">
     {% endif %}
 
+    {% if link %}
+        <link type="application/json+oembed" href="{{ link }}"/>
+    {% endif %}
+
     <script src="../static/scripts/particles.js"></script>
 
     <script>

@@ -2,7 +2,7 @@ import random
 
 from flask import Flask, render_template, redirect, request, json, make_response
 
-from embed import Embed
+from embed import Embed, OEmbed
 
 app = Flask(__name__)
 
@@ -21,13 +21,14 @@ def handle_404(_e):
         "Eventually you'll get there."
     ]
 
-    embed = Embed(
-        title="404 — Not Found",
-        description=f"""The resources you tried to access was not found.\n\n"""
-                    f"""* {random.choice(messages)}"""
-    )
+    oembed = OEmbed()
+    oembed.author_name = "404 — Not Found"
+    oembed.author_url = "https://cypheriel.codes/"
+    oembed.description = f"The resources you tried to access was not found.\n\n* {random.choice(messages)}"
+    oembed.provider_name = "cypheriel.codes"
+    oembed.provider_url = "https://cpyheriel.codes/"
 
-    return render_template("404.html", title="404 | Not Found - cypheriel.codes", embed=embed)
+    return render_template("404.html", title="404 | Not Found - cypheriel.codes", embed=oembed.render())
 
 
 @app.route("/index.html")
@@ -37,8 +38,14 @@ def index_html():
 
 @app.route("/")
 def index():
-    embed = Embed(title="Welcome to cypheriel.codes!", description="An extremely empty Flask-powered website.")
-    return render_template("index.html", title="Index - cypheriel.codes", embed=embed)
+    oembed = OEmbed()
+    oembed.author_name = "Welcome to cypheriel.codes!"
+    oembed.author_url = "https://cypheriel.codes/"
+    oembed.description = "A fairly empty Flask-powered website by Cypheriel."
+    oembed.provider_name = "cypheriel.codes"
+    oembed.provider_url = "https://cpyheriel.codes/"
+
+    return render_template("index.html", title="Index - cypheriel.codes", embed=oembed.render())
 
 
 @app.route("/embed")
@@ -58,35 +65,6 @@ def oembed_json():
     response = make_response(json.dumps(dict(request.args.items())))
     response.content_type = "application/json"
     return response
-
-
-@app.route("/oembed")
-def oembed_generator():
-    oembed = {}
-    for k, v in request.args.items():
-        if k == "desc":
-            k = "description"
-
-        oembed[k] = v
-
-    embed = Embed(
-        title=oembed.get("title", ""),
-        description=oembed.get("description", ""),
-        color=oembed.get("color", "2d4268")
-    )
-
-    query = '&'.join([f'{k}={v}' for k, v in oembed.items()])
-
-    return render_template(
-        "embed.html",
-        link=f"https://cypheriel.codes/oembed.json?{query}",
-        embed=embed
-    )
-
-
-@app.route("/ping_test")
-def ping_test():
-    return redirect("https://youtu.be/dQw4w9WgXcQ")
 
 
 if __name__ == "__main__":
