@@ -5,16 +5,16 @@ from dataclasses import dataclass
 class Embed:
     site_name: str = "cypheriel.codes"
     title: str = "Default Title"
-    description: str = None
-    url: str = None
+    description: str = ""
+    url: str = ""
     color: str = "2d4268"
 
 
 @dataclass
 class OEmbed:
-    title: str = None
-    description: str = None
-    author_name: str = None
+    title: str = ""
+    description: str = ""
+    author_name: str = ""
     author_url: str = "https://cypheriel.codes/"
     provider_name: str = "cypheriel.codes"
     provider_url: str = "https://cypheriel.codes/"
