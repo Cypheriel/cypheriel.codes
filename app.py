@@ -75,7 +75,7 @@ def oembed_generator():
 
     return render_template(
         "embed.html",
-        link="https://cypheriel.codes/static/oembed_static.json" or f"/oembed.json?{query}",
+        link=f"/oembed.json?{query}" or "https://cypheriel.codes/static/oembed_static.json",
         embed=Embed()
     )
 
