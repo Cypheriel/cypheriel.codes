@@ -1,4 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
     <p>Howdy! You're not <em>meant</em> to be here, but whatever.</p>
+    {% if debug %}
+        <pre>Debug: {{ debug }}</pre>
+    {% endif %}
 {% endblock body %}

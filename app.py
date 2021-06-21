@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, make_response
+from flask import Flask, render_template, redirect, request, make_response, json
 
 from embed import Embed
 
@@ -29,7 +29,7 @@ def embed_generator():
             k = "description"
         embed.__setattr__(under_to_ws(k), under_to_ws(v))
 
-    return render_template("embed.html", embed=embed)
+    return render_template("embed.html", embed=embed, debug=json.dumps(embed.__dict__, indent=4))
 
 
 @app.route("/ping_test")
