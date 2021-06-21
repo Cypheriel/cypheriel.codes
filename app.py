@@ -55,7 +55,7 @@ def embed_generator():
 
 @app.route("/oembed.json")
 def oembed_json():
-    response = make_response(json.dumps({**request.args.items()}))
+    response = make_response(json.dumps(dict(request.args.items())))
     response.content_type = "application/json"
     return response
 
