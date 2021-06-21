@@ -62,13 +62,13 @@ def oembed_json():
 
 @app.route("/oembed")
 def oembed_generator():
-    oembed = dict(request.args.items())
+    oembed = dict(("description" if k == "desc" else k, v for k, v in request.args.items()))
     query = '&'.join([f'{k}={v}' for k, v in oembed.items()])
 
     return render_template(
         "embed.html",
         link=f"https://cypheriel.codes/oembed.json?{query}",
-        embed=Embed(title=oembed.get("title", ""))
+        embed=Embed(title=oembed.get("title", ""), description=oembed.get("description", ""), color=oembed.get("color"))
     )
 
 
