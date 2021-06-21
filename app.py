@@ -28,5 +28,10 @@ def embed_generator():
     return render_template("embed.html", embed=embed)
 
 
+@app.route("ping_test")
+def ping_test():
+    return redirect("https://youtu.be/dQw4w9WgXcQ")
+
+
 if __name__ == "__main__":
     app.run()
