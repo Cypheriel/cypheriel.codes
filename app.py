@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 def under_to_ws(s: str) -> str:
-    return s.replace("\\_", "%%UNDER%%").replace("_", " ").replace("__UNDER__", "_")
+    return s.replace("/_", "%%UNDER%%").replace("_", " ").replace("%%UNDER%%", "_")
 
 
 @app.route("/index.html")
