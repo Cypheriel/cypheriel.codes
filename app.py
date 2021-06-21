@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, make_response, json
+from flask import Flask, render_template, redirect, request, json
 
 from embed import Embed
 
@@ -7,6 +7,11 @@ app = Flask(__name__)
 
 def under_to_ws(s: str) -> str:
     return s.replace("\\_", "%%UNDER%%").replace("/_", "%%UNDER%%").replace("_", " ").replace("%%UNDER%%", "_")
+
+
+@app.errorhandler(404)
+def handle_404(_e):
+    return render_template("404.html")
 
 
 @app.route("/index.html")
