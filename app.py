@@ -5,6 +5,10 @@ from embed import Embed
 app = Flask(__name__)
 
 
+def under_to_ws(s: str) -> str:
+    return s.replace("\\_", "__UNDER__").replace("_", " ").replace("__UNDER__", "_")
+
+
 @app.route("/index.html")
 def index_html():
     return redirect("/")
@@ -23,7 +27,7 @@ def embed_generator():
     for k, v in args.items():
         if k == "desc":
             k = "description"
-        embed.__setattr__(k, v)
+        embed.__setattr__(under_to_ws(k), under_to_ws(v))
 
     return render_template("embed.html", embed=embed)
 
