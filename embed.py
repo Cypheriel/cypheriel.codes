@@ -7,4 +7,4 @@ class Embed:
     title: str = "Default Title"
     description: str = ""
     url: str = None
-    color: str = "73ba25"
+    color: str = "2d4268"
