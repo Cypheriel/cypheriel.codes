@@ -18,13 +18,16 @@ def handle_404(_e):
         "Oopsie.",
         "[insert funny text]",
         "TODO: don't",
-        "Eventually you'll get there."
+        "Eventually you'll get there.",
+        "The mouse did it!",
+        "Loading... NOT!",
+        "You could've stopped it."
     ]
 
     oembed = OEmbed()
     oembed.author_name = "404 — Not Found"
     oembed.author_url = "https://cypheriel.codes/"
-    oembed.description = f"The resources you tried to access was not found.\n\n* {random.choice(messages)}"
+    oembed.description = f"The resource you tried to access was not found.\n\n* {random.choice(messages)}"
     oembed.provider_name = "cypheriel.codes"
     oembed.provider_url = "https://cpyheriel.codes/"
 
@@ -62,7 +65,7 @@ def embed_generator():
 
 @app.route("/oembed.json")
 def oembed_json():
-    response = make_response(json.dumps(dict(request.args.items())))
+    response = make_response(json.dumps(dict(request.args.items()), indent=4))
     response.content_type = "application/json"
     return response
 
