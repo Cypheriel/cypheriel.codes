@@ -1,6 +1,6 @@
 import random
 
-from flask import Flask, render_template, redirect, request, json
+from flask import Flask, render_template, redirect, request, json, make_response
 
 from embed import Embed
 
@@ -24,7 +24,7 @@ def handle_404(_e):
     embed = Embed(
         title="404 — Not Found",
         description=f"""The resources you tried to access was not found.\n\n"""
-                    f"""* {random.choice(messages) or "something didn't work..."}"""
+                    f"""* {random.choice(messages)}"""
     )
 
     return render_template("404.html", title="404 | Not Found - cypheriel.codes", embed=embed)
@@ -51,6 +51,13 @@ def embed_generator():
         embed.__setattr__(under_to_ws(k), under_to_ws(v))
 
     return render_template("embed.html", embed=embed, debug=json.dumps(embed.__dict__, indent=4))
+
+
+@app.route("/oembed")
+def oembed():
+    response = make_response(json.dumps({"author_name": "this is a test"}))
+    response.content_type = "application/json+oembed"
+    return response
 
 
 @app.route("/ping_test")
