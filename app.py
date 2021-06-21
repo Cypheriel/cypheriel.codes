@@ -28,7 +28,7 @@ def handle_404(_e):
     oembed.provider_name = "cypheriel.codes"
     oembed.provider_url = "https://cpyheriel.codes/"
 
-    return render_template("404.html", title="404 | Not Found - cypheriel.codes", embed=oembed.render())
+    return render_template("404.html", title="404 | Not Found - cypheriel.codes", **oembed.render())
 
 
 @app.route("/index.html")
