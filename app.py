@@ -71,10 +71,11 @@ def oembed_generator():
         "provider_name": "Provider Name Field",
         "provider_url": "https://cypheriel.codes"
     }
+    query = '&'.join([f'{k}={v}' for k, v in oembed.items()])
 
     return render_template(
         "embed.html",
-        link=f"/oembed.json?{'&'.join([f'{k}={v}' for k, v in oembed.items()])}",
+        link="https://cypheriel.codes/static/oembed_static.json" or f"/oembed.json?{query}",
         embed=Embed()
     )
 
