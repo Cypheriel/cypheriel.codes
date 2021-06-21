@@ -55,7 +55,15 @@ def embed_generator():
 
 @app.route("/oembed")
 def oembed():
-    response = make_response(json.dumps({"author_name": "this is a test"}))
+    response = make_response(json.dumps({
+        "title": "Title Field",
+
+        "author_name": "Author Name Field",
+        "author_url": "https://discordapp.com",
+
+        "provider_name": "Provider Name Field",
+        "provider_url": "https://discordapp.com"
+    }))
     response.content_type = "application/json+oembed"
     return response
 
