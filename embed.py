@@ -18,7 +18,7 @@ class OEmbed:
     author_url: str = "https://cypheriel.codes/"
     provider_name: str = "cypheriel.codes"
     provider_url: str = "https://cypheriel.codes/"
-    color: str = "2d4268"
+    color: str = "262b56"
 
     def render(self):
         return {
