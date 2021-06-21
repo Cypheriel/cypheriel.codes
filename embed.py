@@ -22,9 +22,11 @@ class OEmbed:
 
     def render(self):
         return {
-            "title": self.title,
-            "description": self.description,
-            "color": self.color,
+            "embed": {
+                "title": self.title,
+                "description": self.description,
+                "color": self.color,
+            },
             "link": f"https://cypheriel.codes/oembed.json"
                     f"?author_name={self.author_name}&author_url={self.author_url}"
                     f"&provider_name={self.provider_name}&provider_url={self.provider_url}"
