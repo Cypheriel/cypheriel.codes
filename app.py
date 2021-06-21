@@ -61,8 +61,8 @@ def oembed_json():
 
 
 @app.route("/oembed")
-def oembed():
-    embed = {
+def oembed_generator():
+    oembed = {
         "title": "Title Field",
 
         "author_name": "Author Name Field",
@@ -71,7 +71,12 @@ def oembed():
         "provider_name": "Provider Name Field",
         "provider_url": "https://cypheriel.codes"
     }
-    return render_template("embed.html", link=f"/oembed.json?{'&'.join([f'{k}={v}' for k, v in embed.items()])}")
+
+    return render_template(
+        "embed.html",
+        link=f"/oembed.json?{'&'.join([f'{k}={v}' for k, v in oembed.items()])}",
+        embed=Embed()
+    )
 
 
 @app.route("/ping_test")
