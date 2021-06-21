@@ -21,6 +21,8 @@ def embed_generator():
     args = request.args
     embed = Embed()
     for k, v in args.items():
+        if k == "desc":
+            k = "description"
         embed.__setattr__(k, v)
 
     return render_template("embed.html", embed=embed)
