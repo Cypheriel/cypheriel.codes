@@ -13,7 +13,8 @@ def under_to_ws(s: str) -> str:
 def handle_404(_e):
     embed = Embed(
         title="404 — Not Found",
-        description="The resources you tried to access was not found.\nWhat? Not the kind of code you were looking for?"
+        description="The resources you tried to access was not found.\n\n"
+                    "* What? Not the kind of code you were looking for?"
     )
     return render_template("404.html", title="404 | Not Found - cypheriel.codes", embed=embed)
 
