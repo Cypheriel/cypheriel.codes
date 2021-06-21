@@ -62,7 +62,7 @@ def oembed_json():
 
 @app.route("/oembed")
 def oembed_generator():
-    oembed = dict(("description" if k == "desc" else k, v for k, v in request.args.items()))
+    oembed = dict((("description" if k == "desc" else k), v for k, v in request.args.items()))
 
     embed = Embed(
         title=oembed.get("title", ""),
