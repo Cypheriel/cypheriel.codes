@@ -48,7 +48,7 @@ def index():
     oembed.provider_name = "cypheriel.codes"
     oembed.provider_url = "https://cpyheriel.codes/"
 
-    return render_template("index.html", title="Index - cypheriel.codes", embed=oembed.render())
+    return render_template("index.html", title="Index - cypheriel.codes", **oembed.render())
 
 
 @app.route("/embed")
