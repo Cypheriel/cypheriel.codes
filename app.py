@@ -1,3 +1,5 @@
+import random
+
 from flask import Flask, render_template, redirect, request, json
 
 from embed import Embed
@@ -11,11 +13,20 @@ def under_to_ws(s: str) -> str:
 
 @app.errorhandler(404)
 def handle_404(_e):
+    messages = [
+        "What? Not the kind of code you were looking for?",
+        "Oopsie.",
+        "<insert funny text>",
+        "TODO: don't",
+        "Eventually you'll get there."
+    ]
+
     embed = Embed(
         title="404 — Not Found",
         description="The resources you tried to access was not found.\n\n"
-                    "* What? Not the kind of code you were looking for?"
+                    "* " + random.choice(messages)
     )
+
     return render_template("404.html", title="404 | Not Found - cypheriel.codes", embed=embed)
 
 
