@@ -19,6 +19,8 @@
     {% if link %}
         <link type="application/json+oembed" href="{{ link }}"/>
     {% endif %}
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
 
     <script src="../static/scripts/particles.js"></script>
 
@@ -60,6 +62,22 @@
 
             a, a:visited, a:active {
                 color: deepskyblue;
+            }
+
+            * {
+                font-family: 'Fira Sans', sans-serif;
+            }
+
+            .bold {
+                font-weight: bold;
+            }
+
+            .italic {
+                font-style: italic;
+            }
+
+            .oblique {
+                font-style: oblique;
             }
         </style>
     {% endif %}
