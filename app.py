@@ -53,19 +53,16 @@ def embed_generator():
     return render_template("embed.html", embed=embed, debug=json.dumps(embed.__dict__, indent=4))
 
 
+@app.route("/oembed.json")
+def oembed_json():
+    response = make_response(json.dumps({**request.args.items()}))
+    response.content_type = "application/json"
+    return response
+
+
 @app.route("/oembed")
 def oembed():
-    response = make_response(json.dumps({
-        "title": "Title Field",
-
-        "author_name": "Author Name Field",
-        "author_url": "https://discordapp.com",
-
-        "provider_name": "Provider Name Field",
-        "provider_url": "https://discordapp.com"
-    }))
-    response.content_type = "application/json+oembed"
-    return response
+    return render_template("oembed.html", link="/oembed.json?title=Test&author_name=Test")
 
 
 @app.route("/ping_test")
