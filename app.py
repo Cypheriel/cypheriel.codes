@@ -23,8 +23,8 @@ def handle_404(_e):
 
     embed = Embed(
         title="404 — Not Found",
-        description="The resources you tried to access was not found.\n\n"
-                    "* " + random.choice(messages)
+        description=f"""The resources you tried to access was not found.\n\n"""
+                    f"""* {random.choice(messages) or "something didn't work..."}"""
     )
 
     return render_template("404.html", title="404 | Not Found - cypheriel.codes", embed=embed)
