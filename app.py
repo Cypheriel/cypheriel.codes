@@ -62,15 +62,7 @@ def oembed_json():
 
 @app.route("/oembed")
 def oembed_generator():
-    oembed = {
-        "title": "Title Field",
-
-        "author_name": "Author Name Field",
-        "author_url": "https://cypheriel.codes",
-
-        "provider_name": "Provider Name Field",
-        "provider_url": "https://cypheriel.codes"
-    }
+    oembed = dict(request.args.items())
     query = '&'.join([f'{k}={v}' for k, v in oembed.items()])
 
     return render_template(
