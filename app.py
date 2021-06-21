@@ -71,7 +71,7 @@ def oembed():
         "provider_name": "Provider Name Field",
         "provider_url": "https://cypheriel.codes"
     }
-    return render_template("oembed.html", link=f"/oembed.json?{'&'.join([f'{k}={v}' for k, v in embed.items()])}")
+    return render_template("embed.html", link=f"/oembed.json?{'&'.join([f'{k}={v}' for k, v in embed.items()])}")
 
 
 @app.route("/ping_test")

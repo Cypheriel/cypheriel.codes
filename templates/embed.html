@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+
+{% block head %}
+    {% if link %}
+        <link type="application/json+oembed" href="{{ link }}"/>
+    {% endif %}
+{% endblock head %}
+
 {% block body %}
     <p>Howdy! You're not <em>meant</em> to be here, but whatever.</p>
     {% if debug %}
