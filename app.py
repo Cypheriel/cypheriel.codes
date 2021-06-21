@@ -16,7 +16,7 @@ def handle_404(_e):
     messages = [
         "What? Not the kind of code you were looking for?",
         "Oopsie.",
-        "<insert funny text>",
+        "\"<insert funny text\"",
         "TODO: don't",
         "Eventually you'll get there."
     ]
