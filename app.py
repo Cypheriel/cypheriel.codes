@@ -11,7 +11,11 @@ def under_to_ws(s: str) -> str:
 
 @app.errorhandler(404)
 def handle_404(_e):
-    return render_template("404.html")
+    embed = Embed(
+        title="404 — Not Found",
+        description="The resources you tried to access was not found."
+    )
+    return render_template("404.html", title="404 | Not Found - cypheriel.codes", embed=embed)
 
 
 @app.route("/index.html")
