@@ -79,8 +79,12 @@ def paste():
         return response
 
     res = client.get(link)
-    response.data = render_template("paste.html", paste=res.text)
 
+    oembed = OEmbed()
+    oembed.title = "Paste Front-end — cypheriel.codes"
+    oembed.description = "Paste front-end viewer."
+
+    response.data = render_template("paste.html", paste=res.text, **oembed.render())
     return response
 
 
