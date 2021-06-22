@@ -1,11 +1,12 @@
 import random
+from httpx import Client
 
 from flask import Flask, render_template, redirect, request, json, make_response
 
 from embed import Embed, OEmbed
 
 app = Flask(__name__)
-
+client = Client()
 
 def under_to_ws(s: str) -> str:
     return s.replace("\\_", "%%UNDER%%").replace("/_", "%%UNDER%%").replace("_", " ").replace("%%UNDER%%", "_")
@@ -25,8 +26,7 @@ def handle_404(_e):
     ]
 
     oembed = OEmbed()
-    oembed.author_name = "404 — Not Found"
-    oembed.author_url = "https://cypheriel.codes/"
+    oembed.title = "404 — Not Found"
     oembed.description = f"The resource you tried to access was not found.\n\n* {random.choice(messages)}"
     oembed.provider_name = "cypheriel.codes"
     oembed.provider_url = "https://cpyheriel.codes/"
@@ -42,8 +42,7 @@ def index_html():
 @app.route("/")
 def index():
     oembed = OEmbed()
-    oembed.author_name = "Welcome to cypheriel.codes!"
-    oembed.author_url = "https://cypheriel.codes/"
+    oembed.title = "Welcome to cypheriel.codes!"
     oembed.description = "A fairly empty Flask-powered website by Cypheriel."
     oembed.provider_name = "cypheriel.codes"
     oembed.provider_url = "https://cpyheriel.codes/"
@@ -67,6 +66,21 @@ def embed_generator():
 def oembed_json():
     response = make_response(json.dumps(dict(request.args.items()), indent=4))
     response.content_type = "application/json"
+    return response
+
+
+@app.route("/paste")
+def paste():
+    response = make_response()
+
+    link = request.args.get("link")
+    if not link:
+        response.status_code = 501
+        return response
+
+    res = client.get(link)
+    response.data = render_template("paste.html", paste=res.text)
+
     return response
 
 
