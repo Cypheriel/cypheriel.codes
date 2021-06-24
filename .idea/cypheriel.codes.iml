@@ -10,6 +10,7 @@
     <orderEntry type="library" name="default" level="application" />
     <orderEntry type="library" name="highlight" level="application" />
     <orderEntry type="library" name="atom-one-dark" level="application" />
+    <orderEntry type="library" name="fira_code" level="application" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="versionSpecifier" value="Greater or equal (&gt;=x.y.z)" />

@@ -20,6 +20,8 @@
         <link type="application/json+oembed" href="{{ link }}"/>
     {% endif %}
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5.2/distr/fira_code.css" rel="stylesheet" >
+
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
@@ -34,136 +36,9 @@
     </script>
 
     {% if not no_default_style %}
-        <style>
-            #particles-js canvas {
-                display: block;
-                vertical-align: bottom;
-                -webkit-transform: scale(1);
-                -ms-transform: scale(1);
-                transform: scale(1);
-                opacity: 1;
-                -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
-                transition: opacity .8s ease, transform 1.4s ease
-            }
-
-            #particles-js {
-                width: 100%;
-                height: 100%;
-                position: fixed;
-                z-index: -10;
-                top: 0;
-                left: 0
-            }
-
-            body {
-                background-color: #262b56;
-                background-image: linear-gradient(to right, #262b56, darkslateblue);
-            }
-
-            p, pre, h1, h2 {
-                color: aliceblue;
-            }
-
-            a, a:visited, a:active {
-                color: deepskyblue;
-            }
-
-            * {
-                font-family: 'Fira Sans', sans-serif;
-            }
-
-            pre, code {
-                font-family: "FiraCode Nerd Font", monospace;
-            }
-
-            .bold {
-                font-weight: bold;
-            }
-
-            .italic {
-                font-style: italic;
-            }
-
-            .oblique {
-                font-style: oblique;
-            }
-
-
-            .hljs {
-                color: #abb2bf;
-                background: #282c34;
-            }
-
-            .hljs-comment,
-            .hljs-quote {
-                color: #5c6370;
-                font-style: italic;
-            }
-
-            .hljs-doctag,
-            .hljs-keyword,
-            .hljs-formula {
-                color: #c678dd;
-            }
-
-            .hljs-section,
-            .hljs-name,
-            .hljs-selector-tag,
-            .hljs-deletion,
-            .hljs-subst {
-                color: #e06c75;
-            }
-
-            .hljs-literal {
-                color: #56b6c2;
-            }
-
-            .hljs-string,
-            .hljs-regexp,
-            .hljs-addition,
-            .hljs-attribute,
-            .hljs-meta .hljs-string {
-                color: #98c379;
-            }
-
-            .hljs-attr,
-            .hljs-variable,
-            .hljs-template-variable,
-            .hljs-type,
-            .hljs-selector-class,
-            .hljs-selector-attr,
-            .hljs-selector-pseudo,
-            .hljs-number {
-                color: #d19a66;
-            }
-
-            .hljs-symbol,
-            .hljs-bullet,
-            .hljs-link,
-            .hljs-meta,
-            .hljs-selector-id,
-            .hljs-title {
-                color: #61aeee;
-            }
-
-            .hljs-built_in,
-            .hljs-title.class_,
-            .hljs-class .hljs-title {
-                color: #e6c07b;
-            }
-
-            .hljs-emphasis {
-                font-style: italic;
-            }
-
-            .hljs-strong {
-                font-weight: bold;
-            }
-
-            .hljs-link {
-                text-decoration: underline;
-            }
-        </style>
+        <link href="https://cypheriel.codes/static/html.css" rel="stylesheet">
+        <link href="https://cypheriel.codes/static/particlesjs.css" rel="stylesheet">
+        <link href="https://cypheriel.codes/static/highlightjs.css" rel="stylesheet">
     {% endif %}
 
     {% block head %}

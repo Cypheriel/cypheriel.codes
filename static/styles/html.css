@@ -1,0 +1,28 @@
+body {
+    background-color: #262b56;
+    background-image: linear-gradient(to right, #262b56, darkslateblue);
+}
+
+p, pre, h1, h2 {
+    color: aliceblue;
+}
+
+a, a:visited, a:active {
+    color: deepskyblue;
+}
+
+* {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.oblique {
+    font-style: oblique;
+}
