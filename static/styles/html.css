@@ -3,7 +3,7 @@ body {
     background-image: linear-gradient(to right, #262b56, darkslateblue);
 }
 
-p, pre, h1, h2 {
+p, h1, h2 {
     color: aliceblue;
 }
 
@@ -25,4 +25,8 @@ a, a:visited, a:active {
 
 .oblique {
     font-style: oblique;
+}
+
+pre > code {
+    font-family: 'Fira Code Nerd Font Mono', monospace;
 }
